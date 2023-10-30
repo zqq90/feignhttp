@@ -155,7 +155,7 @@ impl RequestWrapper {
         self.send_body(Some(Body::from(form))).await
     }
 
-    #[cfg(feature = "json")]
+    #[cfg(any(feature = "json", feature = "reqwest-json"))]
     pub async fn send_json<T>(mut self, json: &T) -> Result<ResponseWrapper>
     where
         T: serde::ser::Serialize,
@@ -192,7 +192,7 @@ impl HttpResponse for ResponseWrapper {
 }
 
 impl ResponseWrapper {
-    #[cfg(feature = "json")]
+    #[cfg(any(feature = "json", feature = "reqwest-json"))]
     pub async fn json<T>(self) -> Result<T>
     where
         T: serde::de::DeserializeOwned,
