@@ -29,6 +29,7 @@ reqwest-client = ["reqwest"]
 isahc-client = ["isahc"]
 
 json = ["serde_json", "reqwest/json", "isahc/json"]
+reqwest-json = ["serde_json", "reqwest/json", "reqwest"]
 
 [dependencies]
 feignhttp-codegen = { version = "0.5", path = "codegen" }
